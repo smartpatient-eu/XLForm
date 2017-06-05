@@ -63,12 +63,13 @@
     [super update];
     self.accessoryType = UITableViewCellAccessoryNone;
     [self.textLabel setText:self.rowDescriptor.title];
-    self.textLabel.textColor  = self.rowDescriptor.disabled ? [UIColor grayColor] : [UIColor blackColor];
+    UIColor *enabledTextColor = self.rowDescriptor.cellConfig[@"textLabel.textColor"] != nil ? self.rowDescriptor.cellConfig[@"textLabel.textColor"] : [UIColor blackColor];
+    self.textLabel.textColor  = self.rowDescriptor.disabled ? [UIColor grayColor] : enabledTextColor;
     self.selectionStyle = self.rowDescriptor.disabled ? UITableViewCellSelectionStyleNone : UITableViewCellSelectionStyleDefault;
     self.textLabel.text = [NSString stringWithFormat:@"%@%@", self.rowDescriptor.title, self.rowDescriptor.required && self.rowDescriptor.sectionDescriptor.formDescriptor.addAsteriskToRequiredRowsTitle ? @"*" : @""];
     self.detailTextLabel.text = [self valueDisplayText];
-    self.textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-    self.detailTextLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+    self.textLabel.font = self.rowDescriptor.cellConfig[@"textLabel.font"] != nil ? self.rowDescriptor.cellConfig[@"textLabel.font"] : [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+    self.detailTextLabel.font = self.rowDescriptor.cellConfig[@"detailTextLabel.font"] != nil ? self.rowDescriptor.cellConfig[@"detailTextLabel.font"] : [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
 }
 
 -(BOOL)formDescriptorCellBecomeFirstResponder
