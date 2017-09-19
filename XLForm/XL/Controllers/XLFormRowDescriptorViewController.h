@@ -36,8 +36,11 @@
 
 @protocol XLFormRowDescriptorPopoverViewController <NSObject>
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 @required
 @property (nonatomic) UIPopoverController * popoverController;
+#pragma clang diagnostic pop
 
 
 @end
