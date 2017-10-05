@@ -101,7 +101,6 @@
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"11.0")){
         self.tableView.estimatedSectionHeaderHeight = 0;
         self.tableView.estimatedSectionFooterHeight = 0;
-        self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1, 1)];
     }
     if (self.form.title){
         self.title = self.form.title;
